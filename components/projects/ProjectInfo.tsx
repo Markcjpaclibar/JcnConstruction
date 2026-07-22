@@ -29,6 +29,7 @@ export default function ProjectInfo({
 const statusColor: Record<Project["status"], string> = {
   Completed: "bg-green-100 text-green-700",
   Ongoing: "bg-blue-100 text-blue-700",
+  Conceptual: "bg-yellow-100 text-yellow-700",
 };
 
   return (
