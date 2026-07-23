@@ -19,8 +19,11 @@ const categories = [
   "Residential",
   "Commercial",
   "Industrial",
-  "Renovation",
+  "Institutional",
+  "Corporate",
+  "Religious",
   "Land Development",
+  "Infrastructure",
 ];
 
 export default function ProjectsPage() {

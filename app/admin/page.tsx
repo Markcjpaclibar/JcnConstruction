@@ -24,13 +24,16 @@ const bebas = Bebas_Neue({
 });
 
 export default function Page() {
-  const categories = [
-    "Residential",
-    "Commercial",
-    "Industrial",
-    "Renovation",
-    "Land Development",
-  ];
+ const categories = [
+  "Residential",
+  "Commercial",
+  "Industrial",
+  "Institutional",
+  "Corporate",
+  "Religious",
+  "Land Development",
+  "Infrastructure",
+];
 
 const statuses = [
   "Conceptual",
