@@ -8,12 +8,12 @@ export const licenses: License[] = [
   },
   {
     id: "2",
-    title: "Certificate of Business Name Registration",
+    title: "Certificate of Registration",
     file: "/permits/business-registration.jpg",
   },
   {
     id: "3",
-    title: "Certificate of Registration",
+    title: "Certificate of Business Name Registration",
     file: "/permits/certificate-registration.jpg",
   },
 ];
