@@ -103,7 +103,7 @@ export default function Footer() {
                 {[
                     {
                     icon: FaFacebookF,
-                    href: "#",
+                    href: "https://web.facebook.com/messages/e2ee/t/7769962243037250",
                     },
                     {
                     icon: FaInstagram,
@@ -297,7 +297,7 @@ export default function Footer() {
                     href="mailto:jcnconstruction.admn@gmail.com"
                     className="break-all text-gray-200 hover:text-[#F4C430]"
                   >
-                    jcnconstruction.admn@gmail.com
+                    jcnconstruction61@gmail.com
                   </a>
 
                 </div>

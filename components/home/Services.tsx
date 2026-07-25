@@ -16,7 +16,9 @@ const bebas = Bebas_Neue({
 
 export default function Services() {
   return (
-    <section className="bg-white py-28">
+    <section 
+    id="services"
+    className="bg-white py-28">
       <Container>
         {/* Heading */}
         <div className="max-w-2xl">
