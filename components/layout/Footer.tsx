@@ -103,7 +103,7 @@ export default function Footer() {
                 {[
                     {
                     icon: FaFacebookF,
-                    href: "https://www.facebook.com/share/17zw5zopnn/",
+                    href: "https://web.facebook.com/arkimania",
                     },
                     {
                     icon: FaInstagram,
