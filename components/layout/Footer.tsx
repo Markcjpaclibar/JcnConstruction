@@ -103,7 +103,7 @@ export default function Footer() {
                 {[
                     {
                     icon: FaFacebookF,
-                    href: "https://web.facebook.com/messages/e2ee/t/7769962243037250",
+                    href: "https://www.facebook.com/share/17zw5zopnn/",
                     },
                     {
                     icon: FaInstagram,
