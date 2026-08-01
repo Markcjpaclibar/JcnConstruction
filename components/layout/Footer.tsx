@@ -297,7 +297,7 @@ export default function Footer() {
                     href="mailto:jcnconstruction.admn@gmail.com"
                     className="break-all text-gray-200 hover:text-[#F4C430]"
                   >
-                    jcnconstruction61@gmail.com
+                    jcnconstruction.admn@gmail.com
                   </a>
 
                 </div>
