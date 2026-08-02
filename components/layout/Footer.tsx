@@ -33,6 +33,7 @@ const services = [
   "Architectural Design",
   "Residential Building",
   "Industrial Building",
+  "Religous Building",
   "Commercial Building",
   "Land Development",
   "Material Supply",
