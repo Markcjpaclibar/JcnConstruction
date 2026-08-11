@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import HeroSlideshow from "@/components/home/HeroSlideshow";
 import { Bebas_Neue } from "next/font/google";
 
 const bebas = Bebas_Neue({
@@ -10,24 +11,14 @@ const bebas = Bebas_Neue({
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source src="/videos/hero.mp4" type="video/mp4" />
-      </video>
+      {/* Background Image Slideshow */}
+      <HeroSlideshow />
 
       {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/60" />
 
       {/* Content */}
       <Container className="relative z-10 flex min-h-screen flex-col justify-center py-24">
-
         <div className="max-w-5xl">
 
           {/* Heading */}
@@ -70,9 +61,7 @@ export default function Hero() {
             </Link>
 
           </div>
-
         </div>
-
       </Container>
     </section>
   );
