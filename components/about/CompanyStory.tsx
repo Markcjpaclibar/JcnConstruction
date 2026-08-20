@@ -89,7 +89,7 @@ export default function CompanyStory() {
             <div className="overflow-hidden rounded-3xl shadow-2xl">
 
               <Image
-                src="/images/projects/project1/1.jpg"
+                src="/images/about/company.jpg"
                 alt="JCN Construction"
                 width={700}
                 height={600}
