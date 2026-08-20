@@ -75,7 +75,7 @@ export default function Navbar() {
               <li key={link.name}>
                 <Link
                   href={link.href}
-                  className={`${bebas.className} group relative text-2xl tracking-[1.5px] text-[#0A1F44] transition duration-300 hover:text-[#003D78]`}
+                  className={`${bebas.className} group relative text-xl tracking-[1.5px] text-[#0A1F44] transition duration-300 hover:text-[#003D78]`}
                 >
                   {link.name}
 
@@ -141,7 +141,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={closeMenu}
-                  className={`${bebas.className} block border-b border-gray-100 px-6 py-5 text-2xl tracking-[1px] text-[#0A1F44] transition hover:bg-[#003D78] hover:text-[#F4C430]`}
+                  className={`${bebas.className} block border-b border-gray-100 px-6 py-5 text-xl tracking-[1px] text-[#0A1F44] transition hover:bg-[#003D78] hover:text-[#F4C430]`}
                 >
                   {link.name}
                 </Link>
