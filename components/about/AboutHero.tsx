@@ -17,7 +17,7 @@ export default function AboutHero() {
 
       {/* Background Image */}
       <Image
-        src="/images/about/hero.jpg"
+        src="/images/hero/hero-7.jpeg"
         alt="About JCN Construction"
         fill
         priority
