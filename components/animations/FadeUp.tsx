@@ -26,7 +26,7 @@ const fadeUpVariants: Variants = {
 export default function FadeUp({
   children,
   delay = 0,
-  duration = 0.7,
+  duration = 0.4,
   distance = 30,
   className,
 }: FadeUpProps) {
