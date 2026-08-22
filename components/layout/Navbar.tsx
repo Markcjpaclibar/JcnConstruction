@@ -33,7 +33,7 @@ export default function Navbar() {
   const isAdminPage = pathname.startsWith("/admin");
 
   /*
-   * Detect when the user scrolls.
+   * Detect when the user scrolls
    */
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +52,7 @@ export default function Navbar() {
   }, []);
 
   /*
-   * Close mobile menu when changing pages.
+   * Close mobile menu when changing pages
    */
   useEffect(() => {
     setMenuOpen(false);
@@ -62,6 +62,9 @@ export default function Navbar() {
     setMenuOpen(false);
   };
 
+  /*
+   * Logout
+   */
   async function handleLogout() {
     await supabase.auth.signOut();
 
@@ -70,7 +73,7 @@ export default function Navbar() {
   }
 
   /*
-   * Determine whether a navigation item is active.
+   * Determine active navigation item
    */
   const isActive = (href: string) => {
     if (href === "/") {
@@ -95,11 +98,11 @@ export default function Navbar() {
       <div
         className={`mx-auto transition-all duration-500 ${
           scrolled
-            ? "max-w-7xl rounded-2xl border border-white/20 bg-[#0A1F44]/80 shadow-2xl shadow-black/10 backdrop-blur-xl"
+            ? "max-w-7xl rounded-2xl border border-gray-200/70 bg-white/85 shadow-xl shadow-black/10 backdrop-blur-xl"
             : "max-w-none border-transparent bg-transparent"
         }`}
       >
-        {/* ================= Desktop / Mobile Header ================= */}
+        {/* ================= Header ================= */}
 
         <div
           className={`mx-auto flex items-center justify-between px-6 transition-all duration-500 lg:px-8 ${
@@ -142,7 +145,7 @@ export default function Navbar() {
                       href={link.href}
                       className={`${bebas.className} group relative text-lg tracking-[1.5px] transition-all duration-300 lg:text-xl ${
                         scrolled
-                          ? "text-white hover:text-[#F4C430]"
+                          ? "text-[#0A1F44] hover:text-[#003D78]"
                           : "text-white hover:text-[#F4C430]"
                       }`}
                     >
@@ -168,7 +171,7 @@ export default function Navbar() {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className={`${bebas.className} group flex items-center gap-2 rounded-xl border border-red-400/30 bg-red-500/90 px-5 py-2.5 text-lg tracking-[1px] text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-600 hover:shadow-xl`}
+                    className={`${bebas.className} group flex items-center gap-2 rounded-xl border border-red-400/30 bg-red-500 px-5 py-2.5 text-lg tracking-[1px] text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-red-600 hover:shadow-xl`}
                   >
                     <LogOut
                       size={18}
@@ -186,7 +189,11 @@ export default function Navbar() {
 
           <button
             onClick={() => setMenuOpen((open) => !open)}
-            className="relative z-10 rounded-xl p-2 text-white transition-all duration-300 hover:bg-white/10 md:hidden"
+            className={`relative z-10 rounded-xl p-2 transition-all duration-300 md:hidden ${
+              scrolled
+                ? "text-[#0A1F44] hover:bg-gray-100"
+                : "text-white hover:bg-white/10"
+            }`}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
           >
@@ -203,7 +210,9 @@ export default function Navbar() {
         <div
           className={`overflow-hidden rounded-b-2xl transition-all duration-500 md:hidden ${
             menuOpen
-              ? "max-h-[700px] border-t border-white/10 bg-[#0A1F44]/95 backdrop-blur-2xl"
+              ? scrolled
+                ? "max-h-[700px] border-t border-gray-200 bg-white/95 backdrop-blur-2xl"
+                : "max-h-[700px] border-t border-white/10 bg-black/60 backdrop-blur-2xl"
               : "max-h-0"
           }`}
         >
@@ -217,10 +226,16 @@ export default function Navbar() {
                     <Link
                       href={link.href}
                       onClick={closeMenu}
-                      className={`${bebas.className} relative block border-b border-white/10 px-6 py-5 text-xl tracking-[1px] transition-all duration-300 ${
+                      className={`${bebas.className} relative block border-b px-6 py-5 text-xl tracking-[1px] transition-all duration-300 ${
+                        scrolled
+                          ? "border-gray-100 text-[#0A1F44] hover:bg-gray-50 hover:text-[#003D78]"
+                          : "border-white/10 text-white hover:bg-white/10 hover:text-[#F4C430]"
+                      } ${
                         active
-                          ? "bg-white/10 text-[#F4C430]"
-                          : "text-white hover:bg-white/10 hover:text-[#F4C430]"
+                          ? scrolled
+                            ? "bg-gray-50 text-[#003D78]"
+                            : "bg-white/10 text-[#F4C430]"
+                          : ""
                       }`}
                     >
                       {link.name}
@@ -242,7 +257,11 @@ export default function Navbar() {
                       closeMenu();
                       await handleLogout();
                     }}
-                    className={`${bebas.className} flex w-full items-center gap-3 border-b border-white/10 bg-red-600 px-6 py-5 text-left text-xl tracking-[1px] text-white transition-all duration-300 hover:bg-red-700`}
+                    className={`${bebas.className} flex w-full items-center gap-3 border-b px-6 py-5 text-left text-xl tracking-[1px] text-white transition-all duration-300 ${
+                      scrolled
+                        ? "border-gray-100 bg-red-600 hover:bg-red-700"
+                        : "border-white/10 bg-red-600 hover:bg-red-700"
+                    }`}
                   >
                     <LogOut size={22} />
 
