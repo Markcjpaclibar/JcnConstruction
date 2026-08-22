@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, LogOut } from "lucide-react";
-import { Manrope } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase-browser";
 
-const manrope = Manrope({
+const bebas = Bebas_Neue({
   subsets: ["latin"],
-  weight: ["500", "600"],
+  weight: "400",
 });
 
 const navLinks = [
@@ -98,6 +98,7 @@ export default function Navbar() {
       {/* ================= Main Navbar ================= */}
 
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:h-24 lg:px-8">
+
         {/* ================= Logo ================= */}
 
         <Link
@@ -119,6 +120,7 @@ export default function Navbar() {
 
         <nav className="hidden md:block">
           <ul className="flex items-center gap-7 lg:gap-9">
+
             {navLinks.map((link) => {
               const active = isActive(link.href);
 
@@ -126,7 +128,7 @@ export default function Navbar() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={`${manrope.className} group relative text-[15px] font-semibold tracking-[0.08em] transition-colors duration-300 lg:text-[16px] ${
+                    className={`${bebas.className} group relative text-lg tracking-[1.5px] transition-colors duration-300 lg:text-xl ${
                       scrolled
                         ? "text-[#0A1F44] hover:text-[#003D78]"
                         : "text-white hover:text-[#F4C430]"
@@ -154,7 +156,7 @@ export default function Navbar() {
               <li>
                 <button
                   onClick={handleLogout}
-                  className={`${manrope.className} group flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-[15px] font-semibold tracking-[0.06em] text-white shadow-lg transition-all duration-300 hover:bg-red-700 hover:shadow-xl`}
+                  className={`${bebas.className} group flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-lg tracking-[1px] text-white shadow-lg transition-all duration-300 hover:bg-red-700 hover:shadow-xl`}
                 >
                   <LogOut
                     size={18}
@@ -165,6 +167,7 @@ export default function Navbar() {
                 </button>
               </li>
             )}
+
           </ul>
         </nav>
 
@@ -192,7 +195,9 @@ export default function Navbar() {
 
       <div
         className={`overflow-hidden transition-all duration-300 md:hidden ${
-          menuOpen ? "max-h-[700px]" : "max-h-0"
+          menuOpen
+            ? "max-h-[700px]"
+            : "max-h-0"
         } ${
           scrolled
             ? "bg-white/95 backdrop-blur-xl"
@@ -201,6 +206,7 @@ export default function Navbar() {
       >
         <nav>
           <ul className="flex flex-col">
+
             {navLinks.map((link) => {
               const active = isActive(link.href);
 
@@ -209,7 +215,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={closeMenu}
-                    className={`${manrope.className} relative block border-b px-6 py-5 text-[16px] font-semibold tracking-[0.06em] transition-colors duration-300 ${
+                    className={`${bebas.className} relative block border-b px-6 py-5 text-xl tracking-[1px] transition-colors duration-300 ${
                       scrolled
                         ? "border-gray-100 text-[#0A1F44] hover:bg-gray-50 hover:text-[#003D78]"
                         : "border-white/10 text-white hover:bg-white/10 hover:text-[#F4C430]"
@@ -240,7 +246,7 @@ export default function Navbar() {
                     closeMenu();
                     await handleLogout();
                   }}
-                  className={`${manrope.className} flex w-full items-center gap-3 bg-red-600 px-6 py-5 text-left text-[16px] font-semibold tracking-[0.06em] text-white transition-colors duration-300 hover:bg-red-700`}
+                  className={`${bebas.className} flex w-full items-center gap-3 bg-red-600 px-6 py-5 text-left text-xl tracking-[1px] text-white transition-colors duration-300 hover:bg-red-700`}
                 >
                   <LogOut size={22} />
 
@@ -248,6 +254,7 @@ export default function Navbar() {
                 </button>
               </li>
             )}
+
           </ul>
         </nav>
       </div>
