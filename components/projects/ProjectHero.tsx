@@ -15,7 +15,7 @@ export default function ProjectHero() {
     <section className="relative flex h-[60vh] min-h-[500px] items-center justify-center overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/images/projects/heroo.jpg"
+        src="/images/hero/hero-1.jpeg"
         alt="Our Projects"
         fill
         priority
@@ -23,7 +23,7 @@ export default function ProjectHero() {
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-[#003D78]/40" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 text-center lg:px-8">
