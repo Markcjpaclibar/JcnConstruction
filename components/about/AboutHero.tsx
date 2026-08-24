@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Bebas_Neue, Poppins } from "next/font/google";
+import FadeUp from "@/components/animations/FadeUp";
 
 const bebas = Bebas_Neue({
   subsets: ["latin"],
@@ -30,18 +31,28 @@ export default function AboutHero() {
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
 
-        <h1
-          className={`${bebas.className} text-5xl leading-none text-white sm:text-6xl lg:text-8xl`}
-        >
-          ABOUT JCN CONSTRUCTION CO.
-        </h1>
+        {/* Heading */}
+        <FadeUp duration={0.8} distance={45}>
+          <h1
+            className={`${bebas.className} text-5xl leading-none text-white sm:text-6xl lg:text-8xl`}
+          >
+            ABOUT JCN CONSTRUCTION CO.
+          </h1>
+        </FadeUp>
 
-        <p
-          className={`${poppins.className} mx-auto mt-6 max-w-3xl text-base font-medium leading-7 text-white/90 sm:text-lg lg:text-xl`}
+        {/* Description */}
+        <FadeUp
+          delay={0.2}
+          duration={0.8}
+          distance={35}
         >
-          Built on trust, driven by excellence, your partner in building
-          lasting structures across Bacolod and beyond.
-        </p>
+          <p
+            className={`${poppins.className} mx-auto mt-6 max-w-3xl text-base font-medium leading-7 text-white/90 sm:text-lg lg:text-xl`}
+          >
+            Built on trust, driven by excellence, your partner in building
+            lasting structures across Bacolod and beyond.
+          </p>
+        </FadeUp>
 
       </div>
 

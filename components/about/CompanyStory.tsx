@@ -15,6 +15,10 @@ import {
 
 import Container from "@/components/ui/Container";
 
+import FadeUp from "@/components/animations/FadeUp";
+import FadeLeft from "@/components/animations/FadeLeft";
+import FadeRight from "@/components/animations/FadeRight";
+
 const bebas = Bebas_Neue({
   subsets: ["latin"],
   weight: "400",
@@ -56,160 +60,185 @@ export default function CompanyStory() {
   return (
     <section className="bg-white py-24">
       <Container>
+
+        {/* ========================================================= */}
         {/* Section Heading */}
+        {/* ========================================================= */}
 
-        <div className="mb-16 text-center">
+        <FadeUp>
+          <div className="mb-16 text-center">
 
-          <p
-            className={`${bebas.className} text-xl tracking-[4px] text-[#003D78]`}
-          >
-            OUR STORY
-          </p>
+            <p
+              className={`${bebas.className} text-xl tracking-[4px] text-[#003D78]`}
+            >
+              OUR STORY
+            </p>
 
-          <h2
-            className={`${bebas.className} mt-2 text-5xl leading-none text-[#0A1F44] md:text-7xl`}
-          >
-            BUILDING TRUST
-            <br />
-            SINCE 2007
-          </h2>
+            <h2
+              className={`${bebas.className} mt-2 text-5xl leading-none text-[#0A1F44] md:text-7xl`}
+            >
+              BUILDING TRUST
+              <br />
+              SINCE 2007
+            </h2>
 
-          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-[#F4C430]" />
+            <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-[#F4C430]" />
 
-        </div>
+          </div>
+        </FadeUp>
 
+        {/* ========================================================= */}
         {/* Content */}
+        {/* ========================================================= */}
 
         <div className="grid items-center gap-16 lg:grid-cols-2">
 
-          {/* Image */}
+          {/* ======================================================= */}
+          {/* Image - Fade Right */}
+          {/* ======================================================= */}
 
-          <div className="relative">
+          <FadeRight
+            duration={0.8}
+            distance={60}
+          >
+            <div className="relative">
 
-            <div className="overflow-hidden rounded-3xl shadow-2xl">
+              <div className="overflow-hidden rounded-3xl shadow-2xl">
 
-              <Image
-                src="/images/about/company.jpg"
-                alt="JCN Construction"
-                width={700}
-                height={600}
-                className="h-full w-full object-cover transition duration-700 hover:scale-105"
-              />
+                <Image
+                  src="/images/about/company.jpg"
+                  alt="JCN Construction"
+                  width={700}
+                  height={600}
+                  className="h-full w-full object-cover transition duration-700 hover:scale-105"
+                />
+
+              </div>
+
+              {/* Floating Badge */}
+
+              <div className="absolute -bottom-8 left-8 rounded-2xl bg-[#003D78] px-8 py-5 shadow-2xl">
+
+                <p
+                  className={`${bebas.className} text-4xl text-[#F4C430]`}
+                >
+                  EST.
+                </p>
+
+                <p
+                  className={`${bebas.className} text-5xl text-white`}
+                >
+                  2007
+                </p>
+
+              </div>
 
             </div>
+          </FadeRight>
 
-            {/* Floating Badge */}
+          {/* ======================================================= */}
+          {/* Text - Fade Left */}
+          {/* ======================================================= */}
 
-            <div className="absolute -bottom-8 left-8 rounded-2xl bg-[#003D78] px-8 py-5 shadow-2xl">
+          <FadeLeft
+            delay={0.15}
+            duration={0.8}
+            distance={60}
+          >
+            <div>
 
-              <p
-                className={`${bebas.className} text-4xl text-[#F4C430]`}
+              {/* Description */}
+
+              <div
+                className={`${poppins.className} space-y-6 text-lg leading-8 text-gray-600`}
               >
-                EST.
-              </p>
 
-              <p
-                className={`${bebas.className} text-5xl text-white`}
-              >
-                2007
-              </p>
+                <p>
+                  <strong>
+                    JCN Construction Supplies & Engineering Services
+                    (JCNSES)
+                  </strong>{" "}
+                  was established in <strong>2007</strong>,
+                  providing engineering supplies and
+                  construction services with a commitment to
+                  quality, reliability, and customer satisfaction.
+                </p>
 
-            </div>
+                <p>
+                  Over the years, our company has grown into a
+                  trusted construction partner, delivering
+                  projects across residential, commercial,
+                  industrial, institutional, corporate,
+                  religious, land development, and
+                  infrastructure sectors.
+                </p>
 
-          </div>
+                <p>
+                  We take pride in our unwavering commitment to
+                  quality, safety, and sustainability,
+                  ensuring every project is completed to the
+                  highest standards while meeting the unique
+                  needs of every client.
+                </p>
 
-          {/* Text */}
+                <p>
+                  From concept and planning to final turnover,
+                  our experienced team is dedicated to turning
+                  every vision into a lasting structure built
+                  with excellence.
+                </p>
 
-          <div>
+              </div>
 
-            <div
-              className={`${poppins.className} space-y-6 text-lg leading-8 text-gray-600`}
-            >
+              {/* Highlights */}
 
-              <p>
-                <strong>
-                  JCN Construction Supplies & Engineering Services
-                  (JCNSES)
-                </strong>{" "}
-                was established in <strong>2007</strong>,
-                providing engineering supplies and
-                construction services with a commitment to
-                quality, reliability, and customer satisfaction.
-              </p>
+              <div className="mt-10 grid gap-5 sm:grid-cols-2">
 
-              <p>
-                Over the years, our company has grown into a
-                trusted construction partner, delivering
-                projects across residential, commercial,
-                industrial, institutional, corporate,
-                religious, land development, and
-                infrastructure sectors.
-              </p>
+                {highlights.map((item) => {
+                  const Icon = item.icon;
 
-              <p>
-                We take pride in our unwavering commitment to
-                quality, safety, and sustainability,
-                ensuring every project is completed to the
-                highest standards while meeting the unique
-                needs of every client.
-              </p>
+                  return (
+                    <div
+                      key={item.title}
+                      className="flex items-center gap-4 transition-transform duration-300 hover:translate-x-1"
+                    >
 
-              <p>
-                From concept and planning to final turnover,
-                our experienced team is dedicated to turning
-                every vision into a lasting structure built
-                with excellence.
-              </p>
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#003D78]">
 
-            </div>
+                        <Icon
+                          size={22}
+                          className="text-[#F4C430]"
+                        />
 
-            {/* Highlights */}
+                      </div>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
-
-              {highlights.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.title}
-                    className="flex items-center gap-4"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#003D78]">
-
-                      <Icon
-                        size={22}
-                        className="text-[#F4C430]"
-                      />
+                      <span className="font-semibold text-[#0A1F44]">
+                        {item.title}
+                      </span>
 
                     </div>
+                  );
+                })}
 
-                    <span className="font-semibold text-[#0A1F44]">
-                      {item.title}
-                    </span>
+              </div>
 
-                  </div>
-                );
-              })}
+              {/* CTA */}
+
+              <Link
+                href="/projects"
+                className={`${bebas.className} group mt-12 inline-flex items-center gap-3 rounded-2xl bg-[#003D78] px-8 py-4 text-2xl tracking-wide text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#002B57]`}
+              >
+                VIEW OUR PROJECTS
+
+                <ArrowRight
+                  size={22}
+                  className="transition-transform duration-300 group-hover:translate-x-2"
+                />
+
+              </Link>
 
             </div>
-
-            {/* CTA */}
-
-            <Link
-              href="/projects"
-              className={`${bebas.className} group mt-12 inline-flex items-center gap-3 rounded-2xl bg-[#003D78] px-8 py-4 text-2xl tracking-wide text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#002B57]`}
-            >
-              VIEW OUR PROJECTS
-
-              <ArrowRight
-                size={22}
-                className="transition-transform duration-300 group-hover:translate-x-2"
-              />
-
-            </Link>
-
-          </div>
+          </FadeLeft>
 
         </div>
       </Container>
