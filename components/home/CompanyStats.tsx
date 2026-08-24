@@ -1,81 +1,172 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { Bebas_Neue } from "next/font/google";
-import { Home, ChevronRight, Mouse } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Container from "@/components/ui/Container";
 import FadeUp from "@/components/animations/FadeUp";
+import { Bebas_Neue } from "next/font/google";
+import {
+  Briefcase,
+  Building,
+  Users,
+  CheckCircle,
+} from "lucide-react";
 
 const bebas = Bebas_Neue({
   subsets: ["latin"],
   weight: "400",
 });
 
-export default function ProjectHero() {
+const stats = [
+  {
+    icon: Briefcase,
+    end: 10,
+    suffix: "+",
+    label: "Years Experience",
+  },
+  {
+    icon: Building,
+    end: 200,
+    suffix: "+",
+    label: "Projects Completed",
+  },
+  {
+    icon: Users,
+    end: 50,
+    suffix: "+",
+    label: "Skilled Professionals",
+  },
+  {
+    icon: CheckCircle,
+    end: 100,
+    suffix: "%",
+    label: "Client Satisfaction",
+  },
+];
+
+interface StatCardProps {
+  icon: React.ElementType;
+  end: number;
+  suffix: string;
+  label: string;
+}
+
+function StatCard({
+  icon: Icon,
+  end,
+  suffix,
+  label,
+}: StatCardProps) {
+  const [count, setCount] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started.current) return;
+
+        started.current = true;
+
+        let current = 0;
+
+        const totalFrames = 120;
+
+        const timer = setInterval(() => {
+          current++;
+
+          const progress = current / totalFrames;
+          const value = Math.floor(progress * end);
+
+          if (current >= totalFrames) {
+            setCount(end);
+            clearInterval(timer);
+          } else {
+            setCount(value);
+          }
+        }, 25);
+
+        return () => clearInterval(timer);
+      },
+      {
+        threshold: 0.4,
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [end]);
+
   return (
-    <section className="relative flex h-[60vh] min-h-[500px] items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src="/images/hero/hero-1.jpeg"
-        alt="Our Projects"
-        fill
-        priority
-        className="object-cover"
-      />
-
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60" />
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 text-center lg:px-8">
-        {/* Breadcrumb */}
-        <FadeUp duration={0.7}>
-          <div className="mb-6 flex items-center gap-2 text-sm text-gray-300">
-            <Link
-              href="/"
-              className="flex items-center gap-1 transition hover:text-[#F4C430]"
-            >
-              <Home size={16} />
-              Home
-            </Link>
-
-            <ChevronRight size={16} />
-
-            <span className="text-[#F4C430]">
-              Projects
-            </span>
-          </div>
-        </FadeUp>
-
-        {/* Heading */}
-        <FadeUp delay={0.15} duration={0.8}>
-          <h1
-            className={`${bebas.className} text-5xl uppercase leading-none tracking-[2px] text-white sm:text-6xl md:text-7xl lg:text-8xl`}
-          >
-            OUR PROJECTS
-          </h1>
-        </FadeUp>
-
-        {/* Description */}
-        <FadeUp delay={0.3} duration={0.8}>
-          <p className="mt-6 max-w-3xl text-base leading-8 text-gray-200 sm:text-lg md:text-xl">
-            From residential homes to commercial developments and industrial
-            facilities, discover the projects that showcase our commitment to
-            quality craftsmanship, innovation, and precision.
-          </p>
-        </FadeUp>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-[-110px] hidden flex-col items-center text-white md:flex">
-          <div className="animate-bounce">
-            <Mouse size={28} />
-          </div>
-
-          <span className="mt-2 text-xs uppercase tracking-[4px]">
-            Scroll
-          </span>
+    <div ref={cardRef}>
+      <div className="group rounded-2xl border border-white/10 bg-white/5 p-8 text-center transition-all duration-300 hover:-translate-y-2 hover:border-[#F4C430] hover:bg-white/10">
+        {/* Icon */}
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#003D78] transition duration-300 group-hover:bg-[#F4C430]">
+          <Icon
+            size={30}
+            className="text-white transition duration-300 group-hover:text-[#0A1F44]"
+          />
         </div>
+
+        {/* Counter */}
+        <h3
+          className={`${bebas.className} mt-6 text-5xl text-[#F4C430]`}
+        >
+          {count}
+          {suffix}
+        </h3>
+
+        {/* Label */}
+        <p className="mt-3 text-lg text-white">
+          {label}
+        </p>
       </div>
+    </div>
+  );
+}
+
+export default function CompanyStats() {
+  return (
+    <section className="bg-[#0A1F44] py-20">
+      <Container>
+        {/* Heading */}
+        <FadeUp>
+          <div className="mb-16 text-center">
+            <p
+              className={`${bebas.className} text-xl tracking-[3px] text-[#F4C430]`}
+            >
+              OUR ACHIEVEMENTS
+            </p>
+
+            <h2
+              className={`${bebas.className} mt-3 text-5xl uppercase text-white md:text-6xl`}
+            >
+              BUILDING TRUST THROUGH RESULTS
+            </h2>
+          </div>
+        </FadeUp>
+
+        {/* Stats */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <FadeUp
+              key={stat.label}
+              delay={0.1 + index * 0.1}
+              duration={0.7}
+              distance={35}
+            >
+              <StatCard
+                icon={stat.icon}
+                end={stat.end}
+                suffix={stat.suffix}
+                label={stat.label}
+              />
+            </FadeUp>
+          ))}
+        </div>
+      </Container>
     </section>
   );
 }
