@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import { Bebas_Neue } from "next/font/google";
+
 import Container from "@/components/ui/Container";
+import FadeUp from "@/components/animations/FadeUp";
 
 import TeamCard from "./TeamCard";
 import TeamModal from "./TeamModal";
@@ -51,34 +53,55 @@ export default function TeamSection() {
     <>
       <section className="bg-slate-100 py-20 md:py-28">
         <Container>
-          <p
-            className={`${bebas.className} text-[#003D78] tracking-[3px] text-lg`}
-          >
-            THE TEAM
-          </p>
 
-          <h2
-            className={`${bebas.className} mt-2 text-5xl text-[#0A1F44]`}
-          >
-            MEET OUR KEY PEOPLE
-          </h2>
+          {/* ================= Section Heading ================= */}
 
-          <p className="mt-5 max-w-2xl text-lg text-gray-600">
-            A dedicated team of professionals committed to your project's
-            success.
-          </p>
+          <FadeUp
+            duration={0.8}
+            distance={40}
+          >
+            <div>
+              <p
+                className={`${bebas.className} text-lg tracking-[3px] text-[#003D78]`}
+              >
+                THE TEAM
+              </p>
+
+              <h2
+                className={`${bebas.className} mt-2 text-5xl text-[#0A1F44]`}
+              >
+                MEET OUR KEY PEOPLE
+              </h2>
+
+              <p className="mt-5 max-w-2xl text-lg text-gray-600">
+                A dedicated team of professionals committed to your project's
+                success.
+              </p>
+            </div>
+          </FadeUp>
+
+          {/* ================= Team Cards ================= */}
 
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {teamMembers.map((member) => (
-              <TeamCard
+            {teamMembers.map((member, index) => (
+              <FadeUp
                 key={member.id}
-                member={member}
-                onClick={() => setSelectedMember(member)}
-              />
+                delay={0.15 + index * 0.15}
+                duration={0.8}
+                distance={45}
+              >
+                <TeamCard
+                  member={member}
+                  onClick={() => setSelectedMember(member)}
+                />
+              </FadeUp>
             ))}
           </div>
+
         </Container>
       </section>
+
+      {/* ================= Team Modal ================= */}
 
       <TeamModal
         member={selectedMember}

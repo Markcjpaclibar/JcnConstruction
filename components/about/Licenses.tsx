@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Bebas_Neue } from "next/font/google";
 
 import Container from "@/components/ui/Container";
+import FadeUp from "@/components/animations/FadeUp";
 
 import { licenses } from "@/data/Licenses";
 import { License } from "@/types/license";
@@ -24,43 +25,58 @@ export default function Licenses() {
       <section className="bg-white py-16 md:py-20 lg:py-24">
         <Container>
 
+          {/* ========================================================= */}
           {/* Section Heading */}
+          {/* ========================================================= */}
 
-          <div className="mb-12 text-center">
+          <FadeUp
+            duration={0.8}
+            distance={40}
+          >
+            <div className="mb-12 text-center">
 
-            <p
-              className={`${bebas.className} tracking-[5px] text-[#F4C430]`}
-            >
-              COMPLIANCE
-            </p>
+              <p
+                className={`${bebas.className} tracking-[5px] text-[#F4C430]`}
+              >
+                COMPLIANCE
+              </p>
 
-            <h2
-              className={`${bebas.className} mt-2 text-4xl text-[#0A1F44] sm:text-5xl lg:text-6xl`}
-            >
-              OUR LICENSES & PERMITS
-            </h2>
+              <h2
+                className={`${bebas.className} mt-2 text-4xl text-[#0A1F44] sm:text-5xl lg:text-6xl`}
+              >
+                OUR LICENSES & PERMITS
+              </h2>
 
-            <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-[#F4C430]" />
+              <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-[#F4C430]" />
 
-            <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-gray-600 md:text-lg md:leading-8">
-              JCN Construction operates with complete legal compliance.
-              Below are our official licenses and permits that demonstrate
-              our commitment to professionalism, transparency, and quality
-              service.
-            </p>
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-7 text-gray-600 md:text-lg md:leading-8">
+                JCN Construction operates with complete legal compliance.
+                Below are our official licenses and permits that demonstrate
+                our commitment to professionalism, transparency, and quality
+                service.
+              </p>
 
-          </div>
+            </div>
+          </FadeUp>
 
+          {/* ========================================================= */}
           {/* License List */}
+          {/* ========================================================= */}
 
           <div className="mx-auto max-w-5xl space-y-5">
 
-            {licenses.map((license) => (
-              <LicenseRow
+            {licenses.map((license, index) => (
+              <FadeUp
                 key={license.id}
-                license={license}
-                onView={setSelectedLicense}
-              />
+                delay={0.1 + index * 0.1}
+                duration={0.7}
+                distance={35}
+              >
+                <LicenseRow
+                  license={license}
+                  onView={setSelectedLicense}
+                />
+              </FadeUp>
             ))}
 
           </div>
@@ -68,7 +84,9 @@ export default function Licenses() {
         </Container>
       </section>
 
+      {/* ========================================================= */}
       {/* Modal */}
+      {/* ========================================================= */}
 
       <LicenseModal
         license={selectedLicense}
