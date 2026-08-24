@@ -1,4 +1,5 @@
 import Container from "../ui/Container";
+import FadeUp from "@/components/animations/FadeUp";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
 
 const bebas = Bebas_Neue({
@@ -43,23 +44,25 @@ export default function Process() {
     <section className="bg-[#0A1F44] py-28">
       <Container>
         {/* Heading */}
-        <div className="max-w-2xl">
-          <p
-            className={`${bebas.className} text-xl uppercase tracking-[2px] text-[#F4C430]`}
-          >
-            HOW IT WORKS
-          </p>
+        <FadeUp>
+          <div className="max-w-2xl">
+            <p
+              className={`${bebas.className} text-xl uppercase tracking-[2px] text-[#F4C430]`}
+            >
+              HOW IT WORKS
+            </p>
 
-          <h2
-            className={`${bebas.className} mt-3 text-5xl md:text-6xl uppercase leading-none text-white`}
-          >
-            OUR PROCESS
-          </h2>
+            <h2
+              className={`${bebas.className} mt-3 text-5xl uppercase leading-none text-white md:text-6xl`}
+            >
+              OUR PROCESS
+            </h2>
 
-          <p className="mt-5 text-lg leading-8 text-gray-300">
-            A clear, structured approach from first meeting to final handover.
-          </p>
-        </div>
+            <p className="mt-5 text-lg leading-8 text-gray-300">
+              A clear, structured approach from first meeting to final handover.
+            </p>
+          </div>
+        </FadeUp>
 
         {/* Timeline */}
         <div className="relative mt-20">
@@ -68,34 +71,38 @@ export default function Process() {
 
           {/* Steps */}
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step) => (
-              <div
+            {steps.map((step, index) => (
+              <FadeUp
                 key={step.number}
-                className="relative flex flex-col items-center text-center"
+                delay={0.1 + index * 0.15}
+                duration={0.7}
+                distance={40}
               >
-                {/* Circle */}
-                <div className="z-10 flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#F4C430] bg-[#003D78]">
-                  <span
-                    className={`${bebas.className} text-3xl text-white`}
+                <div className="relative flex flex-col items-center text-center">
+                  {/* Circle */}
+                  <div className="z-10 flex h-14 w-14 items-center justify-center rounded-full border-2 border-[#F4C430] bg-[#003D78] transition-transform duration-300 hover:scale-110">
+                    <span
+                      className={`${bebas.className} text-3xl text-white`}
+                    >
+                      {step.number}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3
+                    className={`${bebas.className} mt-6 text-3xl uppercase text-white`}
                   >
-                    {step.number}
-                  </span>
+                    {step.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className={`${dmSans.className} mt-4 max-w-[220px] text-sm font-medium leading-7 text-gray-300`}
+                  >
+                    {step.description}
+                  </p>
                 </div>
-
-                {/* Title */}
-                <h3
-                  className={`${bebas.className} mt-6 text-3xl uppercase text-white`}
-                >
-                  {step.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className={`${dmSans.className} mt-4 max-w-[220px] text-sm font-medium leading-7 text-gray-300`}
-                >
-                  {step.description}
-                </p>
-              </div>
+              </FadeUp>
             ))}
           </div>
         </div>
