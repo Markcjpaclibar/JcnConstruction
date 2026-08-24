@@ -55,7 +55,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
 
               <Link
-                href="https://web.facebook.com/messages/e2ee/t/7769962243037250"
+                href="https://web.facebook.com/arkimania"
                 className={`${bebas.className} w-full rounded-md bg-[#F4C430] px-8 py-4 text-center text-xl tracking-wide text-black transition duration-300 hover:scale-105 hover:bg-[#e7b71d] sm:w-auto`}
               >
                 CONSULT

@@ -39,7 +39,7 @@ export default function FadeUp({
       whileInView="visible"
       viewport={{
         once: true,
-        amount: 0.2,
+        amount: 0.5,
       }}
       transition={{
         duration,

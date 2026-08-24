@@ -25,12 +25,13 @@ interface ProjectInfoProps {
 export default function ProjectInfo({
   project,
 }: ProjectInfoProps) {
-  
-const statusColor: Record<Project["status"], string> = {
-  Completed: "bg-green-100 text-green-700",
-  Ongoing: "bg-blue-100 text-blue-700",
-  Conceptual: "bg-yellow-100 text-yellow-700",
-};
+  const facebookUrl = "https://web.facebook.com/arkimania";
+
+  const statusColor: Record<Project["status"], string> = {
+    Completed: "bg-green-100 text-green-700",
+    Ongoing: "bg-blue-100 text-blue-700",
+    Conceptual: "bg-yellow-100 text-yellow-700",
+  };
 
   return (
     <section className="bg-white px-6 py-10 lg:px-10 lg:py-12">
@@ -56,6 +57,7 @@ const statusColor: Record<Project["status"], string> = {
 
       {/* Project Details */}
       <div className="mt-10 grid gap-6 md:grid-cols-3">
+        {/* Location */}
         <div className="flex items-start gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-5 transition hover:border-[#003D78] hover:shadow-md">
           <div className="rounded-xl bg-[#003D78] p-3">
             <MapPin
@@ -75,6 +77,7 @@ const statusColor: Record<Project["status"], string> = {
           </div>
         </div>
 
+        {/* Floor Area */}
         <div className="flex items-start gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-5 transition hover:border-[#003D78] hover:shadow-md">
           <div className="rounded-xl bg-[#003D78] p-3">
             <Ruler
@@ -94,6 +97,7 @@ const statusColor: Record<Project["status"], string> = {
           </div>
         </div>
 
+        {/* Duration */}
         <div className="flex items-start gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-5 transition hover:border-[#003D78] hover:shadow-md">
           <div className="rounded-xl bg-[#003D78] p-3">
             <Clock3
@@ -134,29 +138,58 @@ const statusColor: Record<Project["status"], string> = {
       {/* Highlights */}
       <div className="mt-12 grid gap-4 md:grid-cols-2">
         <div className="flex items-center gap-3 rounded-xl border border-gray-100 p-4">
-          <CheckCircle2 className="text-green-600" size={22} />
-          <span>Quality Assured Construction</span>
+          <CheckCircle2
+            className="text-green-600"
+            size={22}
+          />
+
+          <span>
+            Quality Assured Construction
+          </span>
         </div>
 
         <div className="flex items-center gap-3 rounded-xl border border-gray-100 p-4">
-          <Hammer className="text-[#003D78]" size={22} />
-          <span>Built by Experienced Professionals</span>
+          <Hammer
+            className="text-[#003D78]"
+            size={22}
+          />
+
+          <span>
+            Built by Experienced Professionals
+          </span>
         </div>
 
         <div className="flex items-center gap-3 rounded-xl border border-gray-100 p-4">
-          <CalendarClock className="text-[#003D78]" size={22} />
-          <span>Completed Within Project Timeline</span>
+          <CalendarClock
+            className="text-[#003D78]"
+            size={22}
+          />
+
+          <span>
+            Completed Within Project Timeline
+          </span>
         </div>
 
         <div className="flex items-center gap-3 rounded-xl border border-gray-100 p-4">
-          <CheckCircle2 className="text-green-600" size={22} />
-          <span>Premium Quality Materials Used</span>
+          <CheckCircle2
+            className="text-green-600"
+            size={22}
+          />
+
+          <span>
+            Premium Quality Materials Used
+          </span>
         </div>
       </div>
 
       {/* CTA */}
       <div className="mt-14">
-        <button className="group inline-flex items-center gap-3 rounded-xl bg-[#003D78] px-8 py-4 text-white transition-all duration-300 hover:bg-[#0A1F44]">
+        <a
+          href={facebookUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-3 rounded-xl bg-[#003D78] px-8 py-4 text-white transition-all duration-300 hover:bg-[#0A1F44]"
+        >
           <span
             className={`${bebas.className} text-2xl tracking-wide`}
           >
@@ -167,7 +200,7 @@ const statusColor: Record<Project["status"], string> = {
             size={22}
             className="transition-transform duration-300 group-hover:translate-x-2"
           />
-        </button>
+        </a>
       </div>
     </section>
   );

@@ -121,7 +121,7 @@ export default function ProjectGrid({
           <div className="mt-8 space-y-4">
 
             <Link
-              href="/contact"
+              href="https://web.facebook.com/arkimania"
               className={`${bebas.className} group flex w-full items-center justify-center gap-3 rounded-2xl bg-[#003D78] px-6 py-4 text-2xl tracking-wide text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#002B57] hover:shadow-xl`}
             >
               CONSULT US

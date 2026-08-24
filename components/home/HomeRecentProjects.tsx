@@ -126,7 +126,7 @@ export default function HomeRecentProjects() {
 
           <div className="mt-12 flex flex-col gap-5 sm:flex-row">
             <Link
-              href="https://web.facebook.com/messages/e2ee/t/7769962243037250"
+              href="https://web.facebook.com/arkimania"
               className={`${bebas.className} inline-flex items-center justify-center rounded-lg bg-[#F4C430] px-10 py-4 text-2xl tracking-wide text-black transition-all duration-300 hover:scale-105 hover:bg-[#e2b422]`}
             >
               GET A FREE CONSULTATION
