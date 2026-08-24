@@ -10,6 +10,8 @@ import {
   Trees,
 } from "lucide-react";
 
+import FadeUp from "@/components/animations/FadeUp";
+
 const bebas = Bebas_Neue({
   subsets: ["latin"],
   weight: "400",
@@ -38,71 +40,89 @@ export default function ProjectCategories({
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+        {/* ========================================================= */}
         {/* Heading */}
+        {/* ========================================================= */}
 
-        <div className="mb-12">
-          <p
-            className={`${bebas.className} text-lg tracking-[4px] text-[#F4C430]`}
-          >
-            EXPLORE OUR PORTFOLIO
-          </p>
+        <FadeUp
+          delay={0.1}
+          duration={0.8}
+          distance={40}
+        >
+          <div className="mb-12">
 
-          <h2
-            className={`${bebas.className} mt-2 text-5xl text-[#0A1F44] md:text-6xl`}
-          >
-            BROWSE BY CATEGORY
-          </h2>
+            <p
+              className={`${bebas.className} text-lg tracking-[4px] text-[#F4C430]`}
+            >
+              EXPLORE OUR PORTFOLIO
+            </p>
 
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-gray-600">
-            Browse our completed and ongoing construction projects by
-            category to find the type of work that best matches your
-            interests.
-          </p>
-        </div>
+            <h2
+              className={`${bebas.className} mt-2 text-5xl text-[#0A1F44] md:text-6xl`}
+            >
+              BROWSE BY CATEGORY
+            </h2>
 
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-gray-600">
+              Browse our completed and ongoing construction projects by
+              category to find the type of work that best matches your
+              interests.
+            </p>
+
+          </div>
+        </FadeUp>
+
+        {/* ========================================================= */}
         {/* Categories */}
+        {/* ========================================================= */}
 
         <div className="-mx-6 overflow-x-auto px-6 pt-2 scrollbar-hide">
           <div className="flex w-max gap-4 md:w-full md:flex-wrap">
-            {categories.map((category) => {
+
+            {categories.map((category, index) => {
               const Icon = categoryIcons[category] || LayoutGrid;
 
               const active = selectedCategory === category;
 
               return (
-                <button
+                <FadeUp
                   key={category}
-                  onClick={() => onSelectCategory(category)}
-                  className={`group flex shrink-0 items-center gap-3 rounded-full border px-6 py-4 transition-all duration-300
-
-                  ${
-                    active
-                      ? "border-[#003D78] bg-[#003D78] text-white shadow-xl shadow-[#003D78]/20"
-                      : "border-gray-200 bg-white text-[#0A1F44] hover:-translate-y-1 hover:border-[#003D78] hover:bg-[#003D78] hover:text-white hover:shadow-lg"
-                  }`}
+                  delay={0.2 + index * 0.08}
+                  duration={0.7}
+                  distance={30}
                 >
-                  <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300
-
-                    ${
+                  <button
+                    onClick={() => onSelectCategory(category)}
+                    className={`group flex shrink-0 items-center gap-3 rounded-full border px-6 py-4 transition-all duration-300 ${
                       active
-                        ? "bg-[#F4C430] text-[#0A1F44]"
-                        : "bg-gray-100 text-[#003D78] group-hover:bg-[#F4C430] group-hover:text-[#0A1F44]"
+                        ? "border-[#003D78] bg-[#003D78] text-white shadow-xl shadow-[#003D78]/20"
+                        : "border-gray-200 bg-white text-[#0A1F44] hover:-translate-y-1 hover:border-[#003D78] hover:bg-[#003D78] hover:text-white hover:shadow-lg"
                     }`}
                   >
-                    <Icon size={20} />
-                  </div>
+                    <div
+                      className={`flex h-10 w-10 items-center justify-center rounded-full transition-all duration-300 ${
+                        active
+                          ? "bg-[#F4C430] text-[#0A1F44]"
+                          : "bg-gray-100 text-[#003D78] group-hover:bg-[#F4C430] group-hover:text-[#0A1F44]"
+                      }`}
+                    >
+                      <Icon size={20} />
+                    </div>
 
-                  <span
-                    className={`${bebas.className} whitespace-nowrap text-xl tracking-wide`}
-                  >
-                    {category}
-                  </span>
-                </button>
+                    <span
+                      className={`${bebas.className} whitespace-nowrap text-xl tracking-wide`}
+                    >
+                      {category}
+                    </span>
+                  </button>
+                </FadeUp>
               );
             })}
+
           </div>
         </div>
+
       </div>
     </section>
   );
