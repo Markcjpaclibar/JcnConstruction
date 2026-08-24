@@ -25,7 +25,7 @@ export default function ClientsHero() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-[#0A1F44]/75" />
+      <div className="absolute inset-0 bg-black/40" />
 
       <Container>
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">
