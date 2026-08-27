@@ -49,8 +49,11 @@ export default function ProjectGrid({
             </FadeUp>
           ) : (
             <>
-              {/* Grid */}
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+              {/* ================================================= */}
+              {/* PROJECT GRID */}
+              {/* ================================================= */}
+
+              <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:gap-x-10">
                 {projects.map((project, index) => (
                   <FadeUp
                     key={project.id}
@@ -66,7 +69,10 @@ export default function ProjectGrid({
                 ))}
               </div>
 
-              {/* Future Pagination */}
+              {/* ================================================= */}
+              {/* FUTURE PAGINATION */}
+              {/* ================================================= */}
+
               <div className="mt-16 flex justify-center">
                 {/* Pagination / Load More */}
               </div>

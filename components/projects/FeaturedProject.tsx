@@ -29,11 +29,11 @@ export default function FeaturedProject({
   buttonText = "VIEW FEATURED PROJECT",
 }: FeaturedProjectProps) {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* ========================================================= */}
-        {/* Heading */}
+        {/* SECTION HEADING */}
         {/* ========================================================= */}
 
         <FadeUp
@@ -41,23 +41,25 @@ export default function FeaturedProject({
           duration={0.8}
           distance={40}
         >
-          <div className="mb-12 text-center">
+          <div className="mb-12 text-center sm:mb-14 lg:mb-16">
+
             <p
-              className={`${bebas.className} text-lg tracking-[3px] text-[#F4C430]`}
+              className={`${bebas.className} text-lg tracking-[3px] text-[#F4C430] sm:text-xl`}
             >
               {sectionTitle}
             </p>
 
             <h2
-              className={`${bebas.className} mt-2 text-5xl uppercase text-[#0A1F44] md:text-6xl`}
+              className={`${bebas.className} mt-2 text-5xl uppercase leading-none tracking-[1px] text-[#0A1F44] sm:text-6xl lg:text-7xl`}
             >
               {sectionHeading}
             </h2>
+
           </div>
         </FadeUp>
 
         {/* ========================================================= */}
-        {/* Featured Project Card */}
+        {/* FEATURED PROJECT */}
         {/* ========================================================= */}
 
         <FadeUp
@@ -65,122 +67,80 @@ export default function FeaturedProject({
           duration={0.9}
           distance={55}
         >
-          <article
-            onClick={() => onOpen(project)}
-            className="group cursor-pointer overflow-hidden rounded-3xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
-          >
-            {/* Image */}
-            <div className="relative h-[500px] overflow-hidden">
-              <Image
-                src={project.coverImage || project.images[0]}
-                alt={project.title}
-                fill
-                priority
-                className="object-cover transition duration-700 group-hover:scale-105"
-              />
+         <article
+  onClick={() => onOpen(project)}
+  className="group cursor-pointer"
+>
+  {/* IMAGE */}
+  <div className="relative aspect-[16/8] w-full overflow-hidden rounded-[4px] bg-gray-200">
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+    <Image
+      src={project.coverImage || project.images[0]}
+      alt={project.title}
+      fill
+      priority
+      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+    />
 
-              {/* Category */}
-              <div className="absolute left-6 top-6 rounded-full bg-[#003D78] px-5 py-2 text-sm font-semibold uppercase tracking-wide text-white">
-                {project.category}
-              </div>
+    {/* Overlay */}
 
-              {/* Status */}
-              {project.status && (
-                <div
-                  className={`absolute right-6 top-6 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-wide ${
-                    project.status === "Completed"
-                      ? "bg-green-600 text-white"
-                      : project.status === "Ongoing"
-                      ? "bg-[#F4C430] text-black"
-                      : "bg-blue-600 text-white"
-                  }`}
-                >
-                  {project.status}
-                </div>
-              )}
+    <div className="absolute inset-0 bg-black/0 transition-all duration-500 group-hover:bg-black/55" />
 
-              {/* Title */}
-              <div className="absolute bottom-8 left-8 right-8">
-                <h3
-                  className={`${bebas.className} text-5xl uppercase text-white md:text-7xl`}
-                >
-                  {project.title}
-                </h3>
-              </div>
-            </div>
+    {/* Hover Content */}
 
-            {/* ===================================================== */}
-            {/* Content */}
-            {/* ===================================================== */}
+    <div className="absolute inset-x-0 bottom-0 p-8 opacity-0 transition-all duration-500 group-hover:opacity-100 lg:p-12">
 
-            <div className="p-10">
+      <div className="translate-y-5 transition-transform duration-500 group-hover:translate-y-0">
 
-              {/* Description */}
-              <p className="max-w-4xl text-lg leading-8 text-gray-600">
-                {project.description}
-              </p>
+        <h3
+          className={`${bebas.className} text-4xl leading-none tracking-wide text-white sm:text-5xl lg:text-7xl`}
+        >
+          {project.title}
+        </h3>
 
-              {/* Project Details */}
-              <div className="mt-8 flex flex-wrap gap-8">
+        <p className="mt-2 text-sm uppercase tracking-[1px] text-white/85 sm:text-base">
+          {project.category}
+        </p>
 
-                <div className="flex items-center gap-3">
-                  <MapPin
-                    className="text-[#003D78]"
-                    size={20}
-                  />
+        <div className="mt-5">
+          <span className="inline-flex border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[1px] text-white backdrop-blur-md">
+            Status: {project.status}
+          </span>
+        </div>
 
-                  <span>
-                    {project.location}
-                  </span>
-                </div>
+      </div>
 
-                <div className="flex items-center gap-3">
-                  <Ruler
-                    className="text-[#003D78]"
-                    size={20}
-                  />
+    </div>
+  </div>
 
-                  <span>
-                    {project.sqm}
-                  </span>
-                </div>
+  {/* Default Content */}
 
-                <div className="flex items-center gap-3">
-                  <Clock3
-                    className="text-[#003D78]"
-                    size={20}
-                  />
+  <div className="mt-5 transition-opacity duration-500 group-hover:opacity-0">
 
-                  <span>
-                    {project.duration}
-                  </span>
-                </div>
+    <div className="flex items-start justify-between gap-6">
 
-              </div>
+      <div>
 
-              {/* Accent Line */}
-              <div className="mt-8 h-1 w-24 rounded-full bg-[#F4C430] transition-all duration-500 group-hover:w-full" />
+        <h3
+          className={`${bebas.className} text-2xl leading-tight tracking-wide text-black sm:text-3xl`}
+        >
+          {project.title}
+        </h3>
 
-              {/* CTA */}
-              <div className="mt-8 flex items-center justify-between">
+        <p className="mt-1 text-gray-700">
+          {project.category}
+        </p>
 
-                <span
-                  className={`${bebas.className} text-3xl uppercase text-[#003D78]`}
-                >
-                  {buttonText}
-                </span>
+      </div>
 
-                <ArrowRight
-                  className="transition group-hover:translate-x-2 group-hover:text-[#F4C430]"
-                />
+      <p className="shrink-0 text-gray-700">
+        Status: {project.status}
+      </p>
 
-              </div>
+    </div>
 
-            </div>
-          </article>
+  </div>
+</article>
         </FadeUp>
 
       </div>

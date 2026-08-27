@@ -1,11 +1,5 @@
 import Image from "next/image";
 import { Bebas_Neue } from "next/font/google";
-import {
-  MapPin,
-  Ruler,
-  Clock3,
-  ArrowRight,
-} from "lucide-react";
 
 import { Project } from "@/types/project";
 
@@ -26,127 +20,78 @@ export default function ProjectCard({
   return (
     <article
       onClick={() => onOpen(project)}
-      className="group cursor-pointer overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl"
+      className="group w-full cursor-pointer"
     >
       {/* ================= IMAGE ================= */}
 
-      <div className="relative h-[340px] overflow-hidden">
-
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[4px] bg-gray-200">
         <Image
           src={project.coverImage}
           alt={project.title}
           fill
-          className="object-cover transition duration-700 group-hover:scale-110"
+          sizes="(max-width: 767px) 100vw, 50vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
 
-        {/* Overlay */}
+        {/* ================= HOVER OVERLAY ================= */}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-90 transition duration-500 group-hover:opacity-70" />
+        <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/55" />
 
-        {/* Category */}
+        {/* ================= HOVER CONTENT ================= */}
 
-       <div className="absolute left-3 top-3 rounded-full bg-[#003D78]/95 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide text-white backdrop-blur-md sm:left-6 sm:top-6 sm:px-5 sm:py-2 sm:text-sm">
-          {project.category}
+        <div className="absolute inset-x-0 bottom-0 p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:p-7 md:p-9">
+          <div className="translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+
+            {/* Project Title */}
+
+            <h3
+              className={`${bebas.className} max-w-2xl text-3xl leading-none tracking-wide text-white sm:text-4xl md:text-5xl`}
+            >
+              {project.title}
+            </h3>
+
+            {/* Category */}
+
+            <p className="mt-2 text-sm font-medium uppercase tracking-[1px] text-white/85 sm:text-base">
+              {project.category}
+            </p>
+
+            {/* Status */}
+
+            <div className="mt-5">
+              <span className="inline-flex items-center border border-white/40 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[1px] text-white backdrop-blur-md">
+                Status: {project.status}
+              </span>
+            </div>
+          </div>
         </div>
-
-        {/* Status */}
-
-        <div
-            className={`absolute right-3 top-3 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide backdrop-blur-md sm:right-6 sm:top-6 sm:px-5 sm:py-2 sm:text-sm
-            ${
-              project.status === "Completed"
-                ? "bg-green-500/80 text-white"
-                : project.status === "Ongoing"
-                ? "bg-[#F4C430]/90 text-black"
-                : project.status === "Conceptual"
-                ? "bg-purple-600/90 text-white"
-                : "bg-gray-500 text-white"
-            }
-          `}
-        >
-          {project.status}
-        </div>
-
-        {/* Title on Image */}
-
-        <div className="absolute bottom-8 left-8 right-8">
-
-          <h3
-            className={`${bebas.className} text-4xl leading-none tracking-wide text-white`}
-          >
-            {project.title}
-          </h3>
-
-        </div>
-
       </div>
 
-      {/* ================= CONTENT ================= */}
+      {/* ================= DEFAULT CONTENT ================= */}
 
-      <div className="p-8">
+      <div className="relative mt-4 transition-opacity duration-500 group-hover:opacity-0">
+        <div className="flex items-start justify-between gap-6">
 
-        {/* Location */}
+          {/* Project Information */}
 
-        <div className="flex items-center gap-3 text-gray-600">
+          <div className="min-w-0 flex-1">
+            <h3
+              className={`${bebas.className} truncate text-xl leading-tight tracking-wide text-black sm:text-2xl md:text-3xl`}
+            >
+              {project.title}
+            </h3>
 
-          <MapPin
-            size={18}
-            className="text-[#003D78]"
-          />
-
-          <span>{project.location}</span>
-
-        </div>
-
-        {/* Details */}
-
-        <div className="mt-5 flex items-center gap-8 text-gray-600">
-
-          <div className="flex items-center gap-2">
-
-            <Ruler
-              size={18}
-              className="text-[#003D78]"
-            />
-
-            <span>{project.sqm}</span>
-
+            <p className="mt-1 text-sm text-gray-700 sm:text-base">
+              {project.category}
+            </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          {/* Status */}
 
-            <Clock3
-              size={18}
-              className="text-[#003D78]"
-            />
-
-            <span>{project.duration}</span>
-
-          </div>
-
+          <p className="shrink-0 text-right text-sm text-gray-700 sm:text-base">
+            Status: {project.status}
+          </p>
         </div>
-
-        {/* Accent Line */}
-
-        <div className="mt-7 h-[3px] w-20 rounded-full bg-[#F4C430] transition-all duration-500 group-hover:w-full" />
-
-        {/* CTA */}
-
-        <div className="mt-8 flex items-center justify-between">
-
-          <span
-            className={`${bebas.className} text-2xl tracking-wide text-[#003D78]`}
-          >
-            VIEW PROJECT
-          </span>
-
-          <ArrowRight
-            size={24}
-            className="transition duration-500 group-hover:translate-x-2 group-hover:text-[#F4C430]"
-          />
-
-        </div>
-
       </div>
     </article>
   );
